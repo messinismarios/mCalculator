@@ -1,7 +1,8 @@
 {
-  "name": "my-app",
-  "version": "0.1.0",
+  "name": "mCalculator",
+  "version": "1.0.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "@storybook/addon-storyshots": "^6.3.10",
     "@testing-library/jest-dom": "^5.14.1",

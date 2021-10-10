@@ -54,7 +54,7 @@ class App extends Component {
 
         else if (button === "C") {
 
-            this.reset()
+            this.clear()
 
         }
 
@@ -151,10 +151,11 @@ class App extends Component {
 
     };
 
-    reset = () => {
+    clear = () => {
 
         this.setState({
             result: false,
+            error: false,
             story: "",
             screen: ""
         });

@@ -166,8 +166,6 @@ export default class mCalculate {
 
                 for (var i = minIndex + 1; i < charArray.length; i++) {
 
-                    maxIndex = i;
-
                     if (charArray[i] === '(') {
 
                         minIndex = i;
@@ -180,10 +178,12 @@ export default class mCalculate {
 
                     }
 
+                    maxIndex = i;
+
                 }
 
-                newBlock = charArray.slice(minIndex, maxIndex).join(" ");
-                charArray.splice(minIndex - 1, maxIndex + 1, this.calculateBlock(newBlock));
+                newBlock = charArray.slice(minIndex, maxIndex + 1).join(" ");
+                charArray.splice(minIndex - 1, (maxIndex - minIndex) + 3, this.calculateBlock(newBlock));
 
             } else {
 
