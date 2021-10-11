@@ -12,7 +12,7 @@ export default class mCalculate {
     calculateBlock(block) {
 
         let charArray = block.split(" ");
-        let done, safeCount, minIndex, mulIndex, divIndex, divProce;
+        let done, safeCount, minIndex, mulIndex, divIndex, divProce, pluProce;
         const safeCountMax = 1000;
 
         if (charArray.length === 1) {
@@ -30,7 +30,6 @@ export default class mCalculate {
                 throw new Error();
 
             }
-
 
             let mulIndex = charArray.indexOf("*");
             let divIndex = charArray.indexOf("/");
@@ -92,32 +91,42 @@ export default class mCalculate {
 
             }
 
-            let minIndex = charArray.indexOf("+");
-            if (minIndex >= 0) {
-
-                charArray.splice(minIndex - 1, 3, parseFloat(charArray[minIndex - 1]) + parseFloat(charArray[minIndex + 1]));
-
-            } else {
-
-                done = true;
-
-            }
-        }
-
-        done = false;
-        safeCount = 0;
-        while (!done) {
-
-            if (safeCount++ && safeCount > safeCountMax) {
-
-                throw new Error();
-
-            }
-
             let minIndex = charArray.indexOf("-");
-            if (charArray.indexOf("-") >= 0) {
+            let pluIndex = charArray.indexOf("+");
 
-                charArray.splice(minIndex - 1, 3, parseFloat(charArray[minIndex - 1]) - parseFloat(charArray[minIndex + 1]));
+            if (minIndex >= 0 || pluIndex >= 0) {
+
+                if (minIndex >= 0) {
+
+                    if (pluIndex >= 0 && pluIndex < minIndex) {
+
+                        minIndex = pluIndex;
+                        pluProce = true;
+
+                    } else {
+
+                        minIndex = minIndex;
+                        pluProce = false;
+
+                    }
+
+                } else {
+
+                    minIndex = pluIndex;
+                    pluProce = true;
+
+                }
+
+                if (pluProce) {
+
+                    charArray.splice(minIndex - 1, 3, parseFloat(charArray[minIndex - 1]) + parseFloat(charArray[minIndex + 1]));
+
+                } else {
+
+                    charArray.splice(minIndex - 1, 3, parseFloat(charArray[minIndex - 1]) - parseFloat(charArray[minIndex + 1]));
+
+                }
+
 
             } else {
 
@@ -166,6 +175,8 @@ export default class mCalculate {
 
                 for (var i = minIndex + 1; i < charArray.length; i++) {
 
+                    maxIndex = i;
+
                     if (charArray[i] === '(') {
 
                         minIndex = i;
@@ -178,12 +189,10 @@ export default class mCalculate {
 
                     }
 
-                    maxIndex = i;
-
                 }
 
-                newBlock = charArray.slice(minIndex, maxIndex + 1).join(" ");
-                charArray.splice(minIndex - 1, (maxIndex - minIndex) + 3, this.calculateBlock(newBlock));
+                newBlock = charArray.slice(minIndex, maxIndex).join(" ");
+                charArray.splice(minIndex - 1, (maxIndex - minIndex) + 2, this.calculateBlock(newBlock));
 
             } else {
 
