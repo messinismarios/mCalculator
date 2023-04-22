@@ -4,14 +4,14 @@
   "private": true,
   "homepage": ".",
   "dependencies": {
-    "@storybook/addon-storyshots": "^6.3.10",
+    "@storybook/addon-storyshots": "^6.5.16",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "node-sass": "^6.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
+    "react-scripts": "5.0.1",
     "react-test-renderer": "^17.0.2",
     "web-vitals": "^1.1.2"
   },
@@ -61,10 +61,10 @@
   },
   "devDependencies": {
     "@storybook/addon-actions": "^6.3.10",
-    "@storybook/addon-essentials": "^6.3.10",
+    "@storybook/addon-essentials": "^6.5.16",
     "@storybook/addon-links": "^6.3.10",
     "@storybook/node-logger": "^6.3.10",
     "@storybook/preset-create-react-app": "^3.2.0",
-    "@storybook/react": "^6.3.10"
+    "@storybook/react": "^6.5.16"
   }
 }
