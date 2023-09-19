@@ -1,8 +1,6 @@
 ## :warning: WARNING!
 
-The below is a weekend project and is **NOT meant for production use** as of right now.
-
-I will however continue working on this so that it can become production-ready (*even though I have no clue why someone would opt to use it!*).
+The below is a weekend project and is **NOT meant for production use**.
 
 # Introduction
 
