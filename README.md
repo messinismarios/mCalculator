@@ -6,24 +6,25 @@ The below is a weekend project and is **NOT meant for production use**.
 
 This project consists of two things, a Javascript Calculation utility **[mCalculate]** and a Calculator built in React **[mCalculator]** (to serve as the UI of the calculation utility).
 
-You can access and use the latest mCalculator release from [messinismarios.com/mCalculator](https://messinismarios.com/mCalculator)
+You can access and use the latest mCalculator release from [mc.messinismarios.com](https://mc.messinismarios.com)
 
 ### [mCalculate]
 
 Using the mCalculate utility is straightforward. You only need to import the module,
 
-    import mCalculate from "./util/mCalculate.js";
+    import { calculate, CalculationError } from "./util/mCalculate.js";
 
 and then call it:
 
-    let result = mCalculate.util.calc(calculation);
-    
-**However, mCalculate requires the input to be a string of space-separated numbers/operators.** For example:
+    let result = calculate(calculation);
 
-In order to calculate: 
-* 2 + 2, the input should be: `"2 + 2"`, 
-* for 3 * (12 + 22) it should be `"3 * ( 12 + 22 )"`, 
-* for 0.3 - 0.1 it should be `"0.3 - 0.1"`, and so on.
+The input is a string, and spaces are optional. For example:
+
+* `calculate("2 + 2")` returns `4`,
+* `calculate("3*(12+22)")` returns `102`,
+* `calculate("-2.5 / (1 - 3)")` returns `1.25`.
+
+If the input is invalid (e.g. `"5 / 0"` or `"(2 + 3"`), mCalculate throws a `CalculationError` describing the problem.
 
 ### [mCalculator]
 
@@ -31,14 +32,14 @@ The mCalculator includes all operations a simple calculator would have, includin
 
 As with any other calculator, the "=" button will perform the calculation (!), and the "C" button will Clear everything on the screen (Result, History, and Errors). Lastly, the "←" button acts as a backspace when typing a number/operator.
 
-You can run mCalculator using `npm install` and `npm run start` after cloning the repository, or by downloading the [complete build](build).
+You can run mCalculator using `npm install` and `npm run dev` after cloning the repository (requires Node.js 20.19+ or 22.12+), or create a production build in `dist/` with `npm run build`.
 
 ## Tasks
 
 - [x] Calculation Utility
 - [x] React UI
 - [ ] Documentation
-- [ ] QOL Improvements[^1]
+- [x] QOL Improvements[^1]
 - [ ] Additional Operations (%, sin/cos, etc.)
 - [ ] Test & Improve Performance
 - [ ] Automated Validation Tests
