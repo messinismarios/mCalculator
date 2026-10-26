@@ -25,7 +25,7 @@
     "@vitejs/plugin-react": "^6.1.2",
     "oxlint": "^1.87.0",
     "sass": "^1.105.1",
-    "storybook": "^10.6.1",
+    "storybook": "^10.6.3",
     "vite": "^8.3.2"
   }
 }
